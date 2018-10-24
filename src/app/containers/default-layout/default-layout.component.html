@@ -1,0 +1,41 @@
+<app-header
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/123.png', width: 36, height: 36, alt: 'CJ'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/123.png', width: 30, height: 30, alt: 'CJ'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <ul class="nav navbar-nav ml-auto"> 
+    <li class="nav-item" *ngIf="!userIsAuthenticated"><a routerLink="/login">Login</a></li>
+    <li class="nav-item" *ngIf="!userIsAuthenticated"><a routerLink="/register">Register</a></li>   
+    <li class="nav-item dropdown" dropdown placement="bottom right" *ngIf="userIsAuthenticated">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+        <img src="assets/img/avatars/5.png" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Wellcome Cintan !</strong></div>
+        <a class="dropdown-item"><i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar [fixed]="true" [display]="'lg'">
+    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  <!-- Main content -->
+  <main class="main">
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+      <app-breadcrumb></app-breadcrumb>
+      <!-- Breadcrumb Menu-->
+      
+    </ol>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.container-fluid -->
+  </main>  
+</div>
+<app-footer>
+  <span><a href="https://chintanjariwala.github.io">Chintan Jariwala</a> &copy; 2018</span>
+</app-footer>

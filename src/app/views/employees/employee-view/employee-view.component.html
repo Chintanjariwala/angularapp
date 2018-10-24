@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i>
+        <a [routerLink]="['/list']"><button type="button" class="btn btn-ghost-success" style="float: right;"><i class="fa fa-arrow-left"></i>&nbsp;Back</button></a>
+      </div>
+      <div class="card-body">
+        <tabset>
+          <tab heading="Profile">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 img">
+                  <div class="col-md-6">
+                    <div class="card text-white bg-primary">
+                      <div class="card-body">
+                        <div class="h4 m-0">$ {{ calculation?.grossSalary }}</div>
+                        <div>Gross Pay</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card text-white bg-success">
+                      <div class="card-body">
+                        <div class="h4 m-0">$ {{ calculation?.takeHomePay }}</div>
+                        <div>Take Home Pay</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 details">
+                  <blockquote>
+                    <h5>First Name : <span>{{ employee?.name.first }}</span></h5>
+                    <h5>Last Name : <span>{{ employee?.name.last }}</span></h5>
+                    <h5>Email : <span>{{ employee?.email }}</span></h5>
+                    <h5>Phone Number : <span>{{ employee?.phone }}</span></h5>
+                    <h5>Age : <span>{{ employee?.age }}</span></h5>
+                    <h5>Marital Status : <span>{{ employee?.marital_status }}</span></h5>
+                    <h5>Salary : <span>$ {{ employee?.baseSalary }}</span></h5>
+                    <h5>Fedral Allowances : <span>{{ employee?.fedral_allowances }}</span></h5>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Statements">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="invoice-title">
+                    <h3 class="pull-right">Payment: Bi-Weekly</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="invoice-title">
+                    <h3 class="pull-right">Hours: 80</h3>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="invoice-title">
+                    <h3 class="pull-right">Per Hours Pay: ${{ calculation?.perHour }}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><strong>Statement</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="table-responsive">
+                        <table class="table table-condensed">
+                          <thead>
+                            <tr>
+                              <td><strong>Taxes</strong></td>
+                              <td class="no-line"></td>
+                              <td class="no-line"></td>
+                              <td class="text-center"><strong>$ {{ calculation?.fedralTax }}</strong></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                            <tr>
+                              <td>Fedral</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.fedralTax }}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>FICA</strong></td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center"><strong>$ {{ calculation?.fica }}</strong></td>
+                            </tr>
+                            <tr>
+                              <td>Social Security</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.ssn }}</td>
+                            </tr>
+                            <tr>
+                              <td>Medicare</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.medicare }}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Pre-Tax Deduction</strong></td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center"><strong>$ {{ calculation?.preTax }}</strong></td>
+                            </tr>
+                            <tr>
+                              <td>Medical Insurance</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.health }}</td>
+                            </tr>
+                            <tr>
+                              <td>Vision Insurance</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.vision }}</td>
+                            </tr>
+                            <tr>
+                              <td>401(k)</td>
+                              <td></td>
+                              <td></td>
+                              <td class="text-center">$ {{ calculation?.r401k }}</td>
+                            </tr>
+                            <tr>
+                              <td class="thick-line"></td>
+                              <td class="thick-line"></td>
+                              <td class="thick-line text-center"><strong>Gross Pay</strong></td>
+                              <td class="thick-line text-right">$ {{ calculation?.grossSalary }}</td>
+                            </tr>
+                            <tr>
+                              <td class="no-line"></td>
+                              <td class="no-line"></td>
+                              <td class="no-line text-center"><strong>Take Home Pay</strong></td>
+                              <td class="no-line text-right" style="color: green">$ {{ calculation?.takeHomePay }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
